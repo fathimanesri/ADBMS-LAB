@@ -10,7 +10,7 @@
 create table dept(dno char(5) primary key,dname varchar(10)unique,location varchar(15));
 alter table dept add mgr_ssn;
 alter table dept add constraint dept_mgr_ssn_fkey foreign key (mgr_ssn) references employee(ssn);
-alter table deptt add mgr_start_date date;
+alter table dept add mgr_start_date date;
 
 --
 -- Table structure for table employee
@@ -24,12 +24,12 @@ alter table employee add salary int check(salary>=20000 and salary<=60000);
 --
 -- Table structure for table project
 --
-create table project(pnumber int primary key,pname varchar(10),plocation varchar(15),dnum char(5),constraint project_dnum_fkey foreign key(dnum) references deptt(dno));
+create table project(pnumber int primary key,pname varchar(10),plocation varchar(15),dnum char(5),constraint project_dnum_fkey foreign key(dnum) references dept(dno));
 
 --
 -- Table structure for table workson
 --
-create table workson(essn int,pno int,hours float(3,1),constraint workson_essn_pno_pkey primary key(essn,pno),constraint workson_essn_fkey foreign key(essn) references employeee(ssn));
+create table workson(essn int,pno int,hours float(3,1),constraint workson_essn_pno_pkey primary key(essn,pno),constraint workson_essn_fkey foreign key(essn) references employee(ssn));
 
 
 
